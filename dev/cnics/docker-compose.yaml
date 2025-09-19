@@ -63,34 +63,34 @@ services:
           - auth-proxy-${COMPOSE_PROJECT_NAME}
       internal:
 
-  gateway-mssql:
+  cnics-mssql:
     extends:
       file: ../common-services.yaml
       service: mssql
     volumes:
-      - leaf-gateway-mssql:/var/opt/mssql
+      - leaf-cnics-mssql:/var/opt/mssql
 
-  gateway-coreapi:
+  cnics-coreapi:
     extends:
       file: ../common-services.yaml
       service: coreapi
     volumes:
-      - ../gateway/keys:/.keys:ro
-      - ../gateway/appsettings.json:/app/API/appsettings.json:ro
+      - ../cnics/keys:/.keys:ro
+      - ../cnics/appsettings.json:/app/API/appsettings.json:ro
     environment:
-      LEAF_JWT_KEY_PW: ${GATEWAY_JWT_KEY_PW}
-      LEAF_APP_DB: Server=gateway-mssql,1433;Database=LeafDB;uid=sa;Password=${MSSQL_SA_PASSWORD}
-      LEAF_CLIN_DB: Server=clin-db,3306;Database=gateway;uid=db-user;Password=${MYSQL_PASSWORD};Pooling=false
+      LEAF_JWT_KEY_PW: ${CNICS_JWT_KEY_PW}
+      LEAF_APP_DB: Server=cnics-mssql,1433;Database=LeafDB;uid=sa;Password=${MSSQL_SA_PASSWORD}
+      LEAF_CLIN_DB: Server=clin-db,3306;Database=cnics;uid=db-user;Password=${MYSQL_PASSWORD};Pooling=false
     labels:
       # https://leafdocs.rit.uw.edu/installation/installation_steps/9_saml2/#route-protection-setup
-      - traefik.http.routers.gateway-coreapi-auth-${COMPOSE_PROJECT_NAME}.rule=Host(`${LEAF_DOMAIN}`) && Path(`/api/user`)
-      - traefik.http.routers.gateway-coreapi-auth-${COMPOSE_PROJECT_NAME}.middlewares=oidc-auth-${COMPOSE_PROJECT_NAME},leaf-groups-${COMPOSE_PROJECT_NAME}
-      - traefik.http.routers.gateway-coreapi-auth-${COMPOSE_PROJECT_NAME}.entrypoints=websecure
-      - traefik.http.routers.gateway-coreapi-auth-${COMPOSE_PROJECT_NAME}.tls.certresolver=letsencrypt
+      - traefik.http.routers.cnics-coreapi-auth-${COMPOSE_PROJECT_NAME}.rule=Host(`${LEAF_DOMAIN}`) && Path(`/api/user`)
+      - traefik.http.routers.cnics-coreapi-auth-${COMPOSE_PROJECT_NAME}.middlewares=oidc-auth-${COMPOSE_PROJECT_NAME},leaf-groups-${COMPOSE_PROJECT_NAME}
+      - traefik.http.routers.cnics-coreapi-auth-${COMPOSE_PROJECT_NAME}.entrypoints=websecure
+      - traefik.http.routers.cnics-coreapi-auth-${COMPOSE_PROJECT_NAME}.tls.certresolver=letsencrypt
 
-      - traefik.http.routers.gateway-coreapi-unauth-${COMPOSE_PROJECT_NAME}.rule=Host(`${LEAF_DOMAIN}`) && PathPrefix(`/api`) && !Path(`/api/user`)
-      - traefik.http.routers.gateway-coreapi-unauth-${COMPOSE_PROJECT_NAME}.entrypoints=websecure
-      - traefik.http.routers.gateway-coreapi-unauth-${COMPOSE_PROJECT_NAME}.tls.certresolver=letsencrypt
+      - traefik.http.routers.cnics-coreapi-unauth-${COMPOSE_PROJECT_NAME}.rule=Host(`${LEAF_DOMAIN}`) && PathPrefix(`/api`) && !Path(`/api/user`)
+      - traefik.http.routers.cnics-coreapi-unauth-${COMPOSE_PROJECT_NAME}.entrypoints=websecure
+      - traefik.http.routers.cnics-coreapi-unauth-${COMPOSE_PROJECT_NAME}.tls.certresolver=letsencrypt
 
   node:
     extends:
@@ -98,10 +98,10 @@ services:
       service: node
     labels:
       - traefik.enable=true
-      - traefik.http.routers.gateway-node-${COMPOSE_PROJECT_NAME}.rule=Host(`${LEAF_DOMAIN}`) && !PathPrefix(`/api`)
-      - traefik.http.routers.gateway-node-${COMPOSE_PROJECT_NAME}.middlewares=oidc-auth-${COMPOSE_PROJECT_NAME}
-      - traefik.http.routers.gateway-node-${COMPOSE_PROJECT_NAME}.entrypoints=websecure
-      - traefik.http.routers.gateway-node-${COMPOSE_PROJECT_NAME}.tls.certresolver=letsencrypt
+      - traefik.http.routers.cnics-node-${COMPOSE_PROJECT_NAME}.rule=Host(`${LEAF_DOMAIN}`) && !PathPrefix(`/api`)
+      - traefik.http.routers.cnics-node-${COMPOSE_PROJECT_NAME}.middlewares=oidc-auth-${COMPOSE_PROJECT_NAME}
+      - traefik.http.routers.cnics-node-${COMPOSE_PROJECT_NAME}.entrypoints=websecure
+      - traefik.http.routers.cnics-node-${COMPOSE_PROJECT_NAME}.tls.certresolver=letsencrypt
 
   clin-db:
     extends:
@@ -109,7 +109,7 @@ services:
       service: clin-db
 
 volumes:
-  leaf-gateway-mssql:
+  leaf-cnics-mssql:
   mysql-data:
 
 networks:
