@@ -51,11 +51,7 @@ services:
       # https://oauth2-proxy.github.io/oauth2-proxy/configuration/integration/#forwardauth-with-static-upstreams-configuration
       - traefik.http.middlewares.oidc-auth-${COMPOSE_PROJECT_NAME}.forwardAuth.address=http://auth-proxy-${COMPOSE_PROJECT_NAME}:4180/
       - traefik.http.middlewares.oidc-auth-${COMPOSE_PROJECT_NAME}.forwardAuth.trustForwardHeader=true
-      - traefik.http.middlewares.oidc-auth-${COMPOSE_PROJECT_NAME}.forwardAuth.authResponseHeaders=X-Auth-Request-User,X-Auth-Request-Email,X-Auth-Request-Access-Token,Authorization
-
-      # TODO dynamically look up from OIDC tokens
-      # add Leaf group to all users via HTTP request header; see appsettings.json for available roles
-      - traefik.http.middlewares.leaf-groups-${COMPOSE_PROJECT_NAME}.headers.customrequestheaders.gws-groups=leaf_users;leaf_federated
+      - traefik.http.middlewares.oidc-auth-${COMPOSE_PROJECT_NAME}.forwardAuth.authResponseHeaders=X-Auth-Request-User,X-Auth-Request-Email,X-Auth-Request-Groups,X-Auth-Request-Access-Token,Authorization
 
     networks:
       ingress:
