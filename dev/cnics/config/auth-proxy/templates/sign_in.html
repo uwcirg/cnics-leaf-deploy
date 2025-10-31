@@ -90,6 +90,12 @@
       footer a {
         text-decoration: underline;
       }
+      .text-left {
+        text-align: left;
+      }
+      .smaller {
+        font-size: 0.95em;
+      }
     </style>
   </head>
   <body class="has-background-light">
@@ -133,24 +139,24 @@
             CNICS uses Leaf, a self-service tool which provides a user-friendly interface to 
             execute queries and retrieve information about study data.
           </p>
-          <p>
-            <b>Note</b>: this system does <b>not</b> contain identified or
-            confidential data, though we ask that you do not distribute
-            information from this system.
-            <em
-              >We have temporarily disabled some security features in this
-              version to allow anonymous logins with the username
-              "test@example.com" and password "testtest". Due to that change,
-              you may experience some odd behavior, including unexpected
-              logouts. This is not a normal configuration for our systems, so
-              please bear with this limitation.</em
-            >
-          </p>
           <br />
           <div class="has-text-centered button-container">
             <button type="submit" class="button block is-primary">
               Sign in to CNICS data query tool
             </button>
+            <p class="text-left smaller">
+              <b>Note</b>: this system does <b>not</b> contain identified or
+              confidential data, though we ask that you do not distribute
+              information from this system.
+              <em
+                >We have temporarily disabled some security features in this
+                version to allow anonymous logins with the username
+                "test@example.com" and password "testtest". Due to that change,
+                you may experience some odd behavior, including unexpected
+                logouts. This is not a normal configuration for our systems, so
+                please bear with this limitation.</em
+              >
+            </p>
           </div>
           <br />
         </form>
