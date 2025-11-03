@@ -102,9 +102,10 @@
     <section id="sideBar">CNICS data query tool</section>
     <section class="main section has-background-light">
       <div class="box block sign-in-box">
-        {{ if .LogoData }}
-        <div class="block logo-box">{{.LogoData}}</div>
-        {{ end }}
+     
+         <div class="block logo-box">
+            <img src="https://sites.uab.edu/cnics/files/2020/04/CNICS-Banner-7.png" alt="site logo" />
+         </div>
 
         <form method="GET" action="{{.ProxyPrefix}}/start">
           <input type="hidden" name="rd" value="{{.Redirect}}" />
