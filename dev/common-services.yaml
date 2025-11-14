@@ -34,14 +34,14 @@ services:
 
   coreapi:
     environment:
-      LEAF_LOGOUT_URI: https://keycloak.cirg.washington.edu/realms/${KEYCLOAK_REALM}/protocol/openid-connect/sign_out
+      LEAF_LOGOUT_URI: https://keycloak.cirg.washington.edu/realms/${KEYCLOAK_REALM}/protocol/openid-connect/logout?redirect_uri=https%3A%2F%2Fleaf.cnics.stage.cirg.uw.edu
       LEAF_JWT_ISSUER: ${LEAF_JWT_ISSUER}
     image: ghcr.io/uwcirg/leaf-api:${LEAF_API_IMAGE_TAG:-latest}
     build:
       context: ../src/leaf/src/server
     volumes:
-      - ./coreapi-entrypoint-override.sh:/usr/local/bin/docker-entrypoint.sh:ro
-    entrypoint: /usr/local/bin/docker-entrypoint.sh
+      - ./coreapi-entrypoint-override.sh:/opt/leaf/coreapi-docker-entrypoint.sh:ro
+    entrypoint: /opt/leaf/coreapi-docker-entrypoint.sh
     command:
       - dotnet
       - run
