@@ -7,7 +7,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
     />
-    <title>Sign In HIV SUCCESS Data Query Tool</title>
+    <title>Sign In CNICS Data Query Tool</title>
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css"
@@ -15,9 +15,8 @@
 
     <style>
       :root {
-        --primary-color: #0057ff;
-        --primary-dark-color: #003bac;
-        --secondary-color: #009959;
+        --primary-color: #1053A0;
+        --primary-dark-color: #0e488b;
       }
       html,
       body {
@@ -54,12 +53,7 @@
         min-width: 240px;
       }
       #sideBar {
-        background: linear-gradient(
-          120deg,
-          var(--primary-dark-color) 4.69%,
-          var(--primary-color) 40.63%,
-          var(--secondary-color) 95.31%
-        );
+        background: var(--primary-color);
         color: #fff;
         cursor: default;
         position: fixed;
@@ -99,7 +93,7 @@
     </style>
   </head>
   <body class="has-background-light">
-    <section id="sideBar">HIV SUCCESS data query tool</section>
+    <section id="sideBar">CNICS data query tool</section>
     <section class="main section has-background-light">
       <div class="box block sign-in-box">
         {{ if .LogoData }}
@@ -109,39 +103,40 @@
         <form method="GET" action="{{.ProxyPrefix}}/start">
           <input type="hidden" name="rd" value="{{.Redirect}}" />
           <h1 class="title has-text-centered">
-            Welcome to the HIV SUCCESS Data Query Tool
+            Welcome to the CNICS Data Query Tool
           </h1>
           <p>
-            HIV SUCCESS is the consortium of NIDA substance use and HIV cohorts.
-            Data across all cohorts is harmonized and available for use by
-            others for cross cohort analyses to support research and
-            organizations for planning and understanding the HIV and substance
-            use syndemics.
+            The CFAR (Centers for AIDS Research) Network of Integrated Clinical Systems 
+            (CNICS) consortium is comprised of 10 HIV clinics sites at CFAR-affiliated medical 
+            centers that contribute detailed, longitudinal data that reflects current decisions 
+            and outcomes in the day-to-day care of people with HIV (PWH) in real-world settings
+            to a centralized data repository supported by the National Institute of Allergy and 
+            Infectious Diseases (NIAID). The express purpose of the CNICS consortium and data 
+            repository is to support translational, clinical, and behavioral HIV research, and data
+            are made available to any investigator in the full spirit of an R24 research platform.
           </p>
           <p>
-            This data query tool allows prospective data users to determine if
-            data of interest might be available for future analyses. For the
-            protection of participants, only aggregated data are shown for
-            groups of 10 or more people. For further access to data, please
-            complete and submit an HIV SUCCESS concept proposal for review.
-            (Form can be found
-            <a href="https://hivsuccess.uw.edu/data.html" target="_blank"
-              >here</a
-            >.)
+            This data query tool allows prospective data users to determine if data of interest 
+            might be available for future analyses. For the protection of participants, only 
+            aggregated data are shown for groups of 10 or more people. For further access to 
+            data and information on the CNICS concept proposal process, please visit the <a href="https://sites.uab.edu/cnics/">CNICS
+            website</a>.
           </p>
           <p>
-            All users are asked to login using their Google or UW Net ID
-            accounts or register through our system. We collect details on
-            names and emails to help with password support and organization/
-            institution to understand who views our data. All information are
-            held securely and confidentially. User information is not shared
-            outside of HIV SUCCESS with the exception of aggregated information
-            on what types of organizations and geographic regions view the data.
+            All users are asked to login using their Google or UW Net ID accounts 
+            or register through our system. We collect details on names and emails to help with 
+            password support and organization/institution information to understand who views 
+            our data. All details are held securely and confidentially. User information is not 
+            shared outside of CNICS with the exception of aggregated information on what 
+            types of organizations and geographic regions view the data.</p>
+          <p>
+            CNICS uses Leaf, a self-service tool which provides a user-friendly interface to 
+            execute queries and retrieve information about study data.
           </p>
           <br />
           <div class="has-text-centered button-container">
             <button type="submit" class="button block is-primary">
-              Sign in to HIV SUCCESS data query tool
+              Sign in to CNICS data query tool
             </button>
           </div>
           <br />
