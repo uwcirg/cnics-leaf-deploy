@@ -45,7 +45,7 @@ Keys need to be readable by the API container. To make all keys readable, run th
 Create a new Keycloak realm for production and staging.
 
 ##### Create a Keycloak client for Leaf
-Follow the instructions for [Keycloak OIDC Auth Provider](https://oauth2-proxy.github.io/oauth2-proxy/7.3.x/configuration/oauth_provider/) to create the OpenID client with the appropriate mappers.
+Follow the instructions for [Keycloak OIDC Auth Provider](https://oauth2-proxy.github.io/oauth2-proxy/7.3.x/configuration/oauth_provider#keycloak-oidc-auth-provider) to create the OpenID client with the appropriate mappers.
 
 ##### Configure SSO
 This part is unfortunately pretty complicated, at least for UW NetID.
