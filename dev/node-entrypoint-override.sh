@@ -31,7 +31,6 @@ write_env_to_json() {
     echo "{${json_contents}}" > "$json_file"
 }
 
-
 write_env_to_json /app/public/env.json
 
 echo $cmdname complete
