@@ -33,7 +33,7 @@ Generate a JWT signing key, by following Leaf instructions for [3 - Create a JWT
         -in ${LEAF_CHECKOUT_PATH}/dev/cnics/keys/cert.pem \
         -inkey ${LEAF_CHECKOUT_PATH}/dev/cnics/keys/key.pem \
         -out ${LEAF_CHECKOUT_PATH}/dev/cnics/keys/leaf.pfx \
-        -password pass:${!JWT_KEY_PW}
+        -password pass:${JWT_KEY_PW}
 
 Keys need to be readable by the API container. To make all keys readable, run the command below
 
@@ -45,9 +45,10 @@ Keys need to be readable by the API container. To make all keys readable, run th
 Create a new Keycloak realm for production and staging.
 
 ##### Create a Keycloak client for Leaf
-Follow the instructions for [Keycloak OIDC Auth Provider](https://oauth2-proxy.github.io/oauth2-proxy/configuration/providers/keycloak-oidc) to create the 
+Follow the instructions for [Keycloak OIDC Auth Provider](https://oauth2-proxy.github.io/oauth2-proxy/7.3.x/configuration/oauth_provider/) to create the OpenID client with the appropriate mappers.
 
 ##### Configure SSO
+This part is unfortunately pretty complicated, at least for UW NetID.
 
 ##### Add groups to Keycloak realm
 Add the "leaf_users" and "leaf_admin" groups to the realm, and then add those groups to users.
