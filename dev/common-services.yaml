@@ -35,9 +35,16 @@ services:
   coreapi:
     environment:
       LEAF_LOGOUT_URI: https://${LEAF_DOMAIN}/oauth2/sign_out
+      LEAF_JWT_ISSUER: ${LEAF_JWT_ISSUER}
     image: ghcr.io/uwcirg/leaf-api:${LEAF_API_IMAGE_TAG:-latest}
     build:
       context: ../src/leaf/src/server
+    volumes:
+      - ./coreapi-entrypoint-override.sh:/usr/local/bin/docker-entrypoint.sh:ro
+    entrypoint: /usr/local/bin/docker-entrypoint.sh
+    command:
+      - dotnet
+      - run
     labels:
       - traefik.enable=true
     networks:

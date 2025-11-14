@@ -31,16 +31,7 @@ write_env_to_json() {
     echo "{${json_contents}}" > "$json_file"
 }
 
-substitute_leaf_jwt_issuer() {
-    # workaround for leaf needing this hardcoded in the config file
-    local json_file="/app/API/appsettings.json"
-
-    # substitute $LEAF_JWT_ISSUER in to appsettings.json:Jwt.Issuer
-    sed -E 's/"Issuer": "(.*?)"/"Issuer": "${LEAF_JWT_ISSUER}"/' $json_file > $json_file
-}
-
 write_env_to_json /app/public/env.json
-substitute_leaf_jwt_issuer
 
 echo $cmdname complete
 echo executing given command $@
