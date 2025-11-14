@@ -15,7 +15,7 @@
 
     <style>
       :root {
-        --primary-color: #1053A0;
+        --primary-color: #1053a0;
         --primary-dark-color: #0e488b;
       }
       html,
@@ -102,17 +102,19 @@
     <section id="sideBar">CNICS data query tool</section>
     <section class="main section has-background-light">
       <div class="box block sign-in-box">
-     
-         <div class="block logo-box">
-            <img src="https://sites.uab.edu/cnics/files/2020/04/CNICS-Banner-7.png" alt="site logo" />
-         </div>
+        <div class="block logo-box">
+          <img
+            src="https://sites.uab.edu/cnics/files/2020/04/CNICS-Banner-7.png"
+            alt="site logo"
+          />
+        </div>
 
         <form method="GET" action="{{.ProxyPrefix}}/start">
           <input type="hidden" name="rd" value="{{.Redirect}}" />
           <h1 class="title has-text-centered">
             Welcome to the CNICS Data Query Tool
           </h1>
-           <p>
+          <p>
             <a href="https://sites.uab.edu/cnics/">CNICS</a> is a consortium of
             10 HIV clinics at academic medical centers. To improve HIV outcomes,
             we gather, use clinically, and share detailed and anonymous data
@@ -130,15 +132,18 @@
           </p>
           <p>
             To explore CNICS data use <em>username</em>:
-            <b>test@example.com</b> and <em>password</em>: <b>testtest</b>. <b>This
-            system is active under development, feel free to contact
-            <a href="mailto:lober@uw.edu">lober@uw.edu</a>
-            with feedback</b>.
+            <b>test@example.com</b> and <em>password</em>: <b>testtest</b>.
+            <b
+              >This system is active under development, feel free to contact
+              <a href="mailto:lober@uw.edu">lober@uw.edu</a>
+              with feedback</b
+            >.
           </p>
           <p>
             <em
-              >We have temporarily disabled some security features in this
-              version to allow anonymous logins. Anonymous logins are not a
+              >Welcome to the online demo of the CNICS Query Tool. As this is a
+              demonstration version, we have temporarily disabled some security
+              features in this version to allow anonymous logins. Anonymous logins are not a
               normal configuration for our systems, so you may experience some
               odd behavior, including unexpected logouts. Please bear with this
               temporary limitation.</em
@@ -151,8 +156,12 @@
             </button>
             <p class="text-left smaller">
               The following link includes an example using CNICS Leaf. You may
-              want to open that link and have it handy for reference once you log
-              in: <a href="https://docs.google.com/document/d/1heQtqxWY57BDW8jCWNYbIBsErGD0ONCJvBuTfXoENaI/edit?tab=t.0">CNICS Leaf Example Query</a>
+              want to open that link and have it handy for reference once you
+              log in:
+              <a
+                href="https://docs.google.com/document/d/1heQtqxWY57BDW8jCWNYbIBsErGD0ONCJvBuTfXoENaI/edit?tab=t.0"
+                >CNICS Leaf Example Query</a
+              >
             </p>
           </div>
           <br />
